@@ -50,9 +50,6 @@
             padding: 20px;
             display: flex;
             align-items: center;
-        }
-
-        .poster {
             overflow: auto;
         }
 
@@ -101,7 +98,7 @@
 <div class="container">
     <div class="poster">
 
-        <img th:src="@{'/' + ${movie.id} + '/movieimage'}">
+        <img th:src="@{'/' + ${movie.id} + '/movieimage'}" style="max-width: 100%; max-height: 800px;">
 
 
         <a class="btn-change-image" th:href="@{'/' + ${movie.id} + '/image'}">Set Image</a>
