@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="show.css">
+    <title>Movies Description</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            margin-top: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        p:last-child {
+            margin-bottom: 20px;
+        }
+
+        .poster {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .poster {
+            overflow: auto;
+        }
+
+        .btn-change-image {
+            background-color: #FFFFFF;
+            color: black;
+            border: 1px solid;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: border-color 0.3s;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .delete-movie {
+            background-color: #FFFFFF;
+            color: black;
+            border: 1px solid;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: border-color 0.3s;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+
+        .btn-change-image:hover {
+            background-color: #c2bcbc;
+        }
+
+        .details {
+            flex: 1;
+            margin-right: 50px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="poster">
+
+        <img th:src="@{'/' + ${movie.id} + '/movieimage'}">
+
+
+        <a class="btn-change-image" th:href="@{'/' + ${movie.id} + '/image'}">Set Image</a>
+        <a class="delete-movie" href="#" th:href="@{'/' + ${movie.id} + '/delete'}">Delete Movie</a>
+
+
+    </div>
+    <div class="details">
+        <h1 th:text="${movie.name}"></h1>
+        <p>IMDb: <span th:text="${movie.imdb}"></span></p>
+        <p>Release Date: <span th:text="${movie.releasedate}"></span></p>
+        <p>Director: <span th:text="${movie.director}"></span></p>
+        <p>Writer: <span th:text="${movie.writer}"></span></p>
+
+        <h2>Genre</h2>
+        <ul>
+            <li th:each="genre : ${movie.genre}" th:text="${genre.description}"></li>
+        </ul>
+
+        <h2>Cast</h2>
+        <ul>
+            <li th:each="cast : ${movie.cast}" th:text="${cast.firstname + ' ' + cast.lastname}"></li>
+        </ul>
+
+        <h2>About</h2>
+        <p th:text="${movie.about.aboutMovie}"></p>
+    </div>
+</div>
+</body>
+</html>

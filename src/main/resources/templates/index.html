@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Movies</title>
+</head>
+<body>
+<div class="container">
+    <!--/*@thymesVar id="movies" type="DemoMoviesApp.MoviesApplication.Domain.Movie"*/-->
+    <div th:if="${movies != null}" th:each="movie : ${movies}">
+        <div class="movie">
+            <a th:href="@{'/' + ${movie.id} + '/show'}">
+                <img th:src="@{'/' + ${movie.name + '.jpg'}}" th:alt="${movie.name}">
+            <div class="movie-info">
+                <p th:text="'Release Date: ' + ${movie.releasedate}"></p>
+                <p th:text="'IMDb: ' + ${movie.imdb}"></p>
+                <p th:text="'Name: ' + ${movie.name}"></p>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

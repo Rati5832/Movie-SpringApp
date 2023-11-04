@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    justify-content: center;
+}
+
+.movie {
+    padding: 10px;
+    background-color: #f7f7f7;
+    transition: transform 0.3s;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin: 10px;
+    width: 300px;
+}
+.movie:hover {
+    transform: scale(1.05);
+}
+
+img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.movie-info {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
